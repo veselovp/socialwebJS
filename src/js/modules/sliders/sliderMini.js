@@ -24,7 +24,7 @@ export default class MiniSlider extends Slider {
       this.slides[0].querySelector('.card__controls-arrow').style.opacity = '1'
     }
   }
-// razobratsja
+  // razobratsja
   nextSlide() {
     if (
       this.slides[1].tagName == 'BUTTON' &&
@@ -60,19 +60,21 @@ export default class MiniSlider extends Slider {
   }
 
   init() {
-    this.page.style.cssText = `
-          display: flex;
-          flex-wrap: wrap;
-          overflow: hidden;
-          align-items: flex-start;
-      `
+    try {
+      this.page.style.cssText = `
+display: flex;
+flex-wrap: wrap;
+overflow: hidden;
+align-items: flex-start;
+`
 
-    this.bindTriggers()
-    this.decorizeSlides()
+      this.bindTriggers()
+      this.decorizeSlides()
 
-    // set timout to slider 5 sek for put on a first one
-    if (this.autoplay) {
-      setInterval(() => this.nextSlide(), 5000)
-    }
+      // set timout to slider 5 sek for put on a first one
+      if (this.autoplay) {
+        setInterval(() => this.nextSlide(), 5000)
+      }
+    } catch (e) {}
   }
 }
