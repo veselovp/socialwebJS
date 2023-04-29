@@ -38,30 +38,48 @@ export default class MainSlider extends Slider {
     this.showSlides((this.slideIndex += n))
   }
 
+  bindTriggers() {
+    this.btns.forEach((item) => {
+      item.addEventListener('click', () => {
+        this.plusSlides(1)
+      })
+
+      item.parentNode.previousElementSibling.addEventListener('click', (e) => {
+        e.preventDefault()
+        this.slideIndex = 1
+        this.showSlides(this.slideIndex)
+      })
+    })
+
+    document.querySelectorAll('.prevmodule').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        // stop passing event thru DOM and after click done 
+        e.stopPropagation()
+        e.preventDefault()
+        this.plusSlides(-1)
+      })
+    })
+
+    document.querySelectorAll('.nextmodule').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        this.plusSlides(1)
+      })
+    })
+  }
+
   render() {
-    try {
-    } catch (e) {
+    // proverajem na tru ili false
+    if (this.page) {
       // pojavlajetsja blok s zaderkoj v 3 sekundi
       // try esli .hanson nebilo to chtobi vikinutj eroor i esli tru to pojavitsja novoje svojstvo hanson
       try {
         this.hanson = document.querySelector('.hanson')
       } catch (e) {}
 
-      this.btns.forEach((item) => {
-        item.addEventListener('click', () => {
-          this.plusSlides(1)
-        })
-
-        item.parentNode.previousElementSibling.addEventListener(
-          'click',
-          (e) => {
-            e.preventDefault()
-            this.slideIndex = 1
-            this.showSlides(this.slideIndex)
-          }
-        )
-      })
       this.showSlides(this.slideIndex)
+      this.bindTriggers()
     }
   }
 }
