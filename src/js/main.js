@@ -4,6 +4,7 @@ import Difference from './modules/differences'
 import VideoP from './modules/videoplayer'
 import Form from './modules/form'
 import ShowInfo from './modules/sliders/showInfo'
+import Download from './modules/downloads'
 
 window.addEventListener('DOMContentLoaded', () => {
   const slider = new MainSlider({ btns: '.next', page: '.page' })
@@ -50,5 +51,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
   new ShowInfo('.plus__content').init()
 
-  
+  new Download('.download').init();
 })
