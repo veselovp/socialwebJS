@@ -3,9 +3,9 @@ export default class Form {
     this.forms = document.querySelectorAll(forms)
     this.inputs = document.querySelectorAll('input')
     this.message = {
-      loading: 'Загрузка...',
-      success: 'Спасибо! Скоро мы с вами свяжемся!',
-      failure: 'Что-то пошло не так...',
+      loading: 'Wait...',
+      success: 'We callback you soon!',
+      failure: 'Something goes wrong...',
     }
     this.path = 'assets/question.php'
   }
